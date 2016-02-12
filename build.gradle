@@ -1,0 +1,26 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'idea'
+
+repositories {		
+	mavenCentral()
+	maven {
+		url "https://github.com/jsprit/mvn-rep/raw/master/snapshots"
+	}
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+mainClassName = "drones.Main"
+
+dependencies {		
+	compile 'jsprit:jsprit-core:1.6.2-SNAPSHOT'
+	compile 'jsprit:jsprit-analysis:1.6.2-SNAPSHOT'
+	compile 'jsprit:jsprit-instances:1.6.2-SNAPSHOT'
+	compile 'jsprit:jsprit-examples:1.6.2-SNAPSHOT'
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.3'
+}
