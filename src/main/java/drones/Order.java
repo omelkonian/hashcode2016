@@ -33,6 +33,32 @@ public class Order {
 
     private static int id_gen = 0;
     public void set(VehicleRoutingProblem.Builder global) {
+        /*int sum = products.values().stream().reduce((i1, i2) -> i1 + i2).get();
+        int iter = sum / Data.maxPayload;
+        for (int i = 0; i < iter; i++) {
+            Shipment.Builder b = Shipment.Builder
+                    .newInstance("service_" + id + "_" + id_gen)
+                    .setName("shipment_" + id + "_" + id_gen)
+                    .setPickupLocation(Location.newInstance(Warehouse.location.x, Warehouse.location.y))
+                    .setDeliveryTimeWindow(new TimeWindow(0.0, Data.turnNo))
+                    .setPickupTimeWindow(new TimeWindow(0.0, Data.turnNo))
+                    .setDeliveryLocation(Location.newInstance(location.x, location.y))
+                    .addSizeDimension(0, Data.maxPayload);
+            id_gen++;
+
+            Shipment shipment = b.build();
+            global.addJob(shipment);
+        }
+        int rem = sum % Data.maxPayload;
+        Shipment.Builder b = Shipment.Builder
+                .newInstance("service_" + id + "_" + id_gen)
+                .setName("shipment_" + id + "_" + id_gen++)
+                .setPickupLocation(Location.newInstance(Warehouse.location.x, Warehouse.location.y))
+                .setDeliveryTimeWindow(new TimeWindow(0.0, Data.turnNo))
+                .setPickupTimeWindow(new TimeWindow(0.0, Data.turnNo))
+                .setDeliveryLocation(Location.newInstance(location.x, location.y))
+                .addSizeDimension(0, rem);*/
+
         int sum = products.values().stream().reduce((i1, i2) -> i1 + i2).get();
         List<Pair<Integer, Integer>> pairs = products.keySet()
                 .stream()

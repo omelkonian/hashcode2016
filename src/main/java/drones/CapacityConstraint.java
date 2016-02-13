@@ -10,11 +10,11 @@ import jsprit.core.problem.solution.route.activity.TourActivity;
 /**
  * @author Orestis Melkonian
  */
-public class DeliverAfterPickupConstraint implements HardActivityConstraint {
+public class CapacityConstraint implements HardActivityConstraint {
 
     private StateManager stateManager;
 
-    DeliverAfterPickupConstraint(StateManager stateManager) {
+    CapacityConstraint(StateManager stateManager) {
         this.stateManager = stateManager;
     }
 

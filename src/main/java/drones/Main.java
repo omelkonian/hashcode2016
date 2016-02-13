@@ -9,7 +9,6 @@ import java.util.*;
 import drones.commands.Command;
 import drones.commands.Deliver;
 import drones.commands.Load;
-import drones.commands.Printer;
 import jsprit.analysis.toolbox.Plotter;
 import jsprit.core.algorithm.*;
 import jsprit.core.algorithm.box.Jsprit;
@@ -51,8 +50,11 @@ public class Main {
 
         VehicleTypeImpl.Builder vehicleBuilder =
                 VehicleTypeImpl.Builder.newInstance("drone");
+
+//        vehicleBuilder.addCapacityDimension(0, Data.maxPayload);
         for (int i = 0; i < Data.productNo; i++)
             vehicleBuilder.addCapacityDimension(i, Data.maxPayload);
+
         VehicleTypeImpl vehicleType = vehicleBuilder.build();
 
         // Vehicles
@@ -78,7 +80,7 @@ public class Main {
         // TODO modify cost
         StateManager stateManager = new StateManager(problem);
         ConstraintManager constraintManager = new ConstraintManager(problem, stateManager);
-        constraintManager.addConstraint(new DeliverAfterPickupConstraint(stateManager), ConstraintManager.Priority.CRITICAL);
+        constraintManager.addConstraint(new CapacityConstraint(stateManager), ConstraintManager.Priority.CRITICAL);
         VehicleRoutingAlgorithm algorithm = Jsprit.Builder.newInstance(problem)
                 .setStateAndConstraintManager(stateManager, constraintManager).buildAlgorithm();
         Collection<VehicleRoutingProblemSolution> solutions = algorithm.searchSolutions();
@@ -102,9 +104,8 @@ public class Main {
 
             /*System.out.println("===========");
             System.out.println("\t\t"+ vehicleID);
-            System.out.println("===========");*/
-
-//            Printer.print(route.getActivities().toArray(new TourActivity[route.getActivities().size()]));
+            System.out.println("===========");
+            Printer.print(route.getActivities().toArray(new TourActivity[route.getActivities().size()]));*/
 
             for (TourActivity act : route.getActivities()) {
 
