@@ -3,10 +3,10 @@ package drones;
 /**
  * @author Orestis Melkonian
  */
-public class Coords {
+public class Point {
     public int x, y;
 
-    public Coords(int x, int y) {
+    public Point(int x, int y) {
         this.x = x;
         this.y = y;
     }

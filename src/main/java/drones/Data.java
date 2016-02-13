@@ -1,25 +1,29 @@
 package drones;
 
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
+import java.util.HashMap;
 
 /**
  * @author Orestis Melkonian
  */
 public class Data {
     public static int maxPayload;
-    public int rows, cols, droneNo, turnNo, productNo, warehouseNo, orderNo;
-    public Map<Integer, Integer> weights = new HashMap<>();
-    public Set<Warehouse> warehouses = new HashSet<>();
-    public Set<Order> orders = new HashSet<>();
+    public static int rows, cols, droneNo, turnNo, productNo, warehouseNo, orderNo;
+    public static Map<Integer, Integer> weights = new HashMap<>();
+    public static Map<Integer, Warehouse> warehouses = new HashMap<>();
+    public static Map<Integer, Order> orders = new HashMap<>();
 
-    @Override
-    public String toString() {
+    public static void print() {
+        System.out.println("========================DATA==============================");
+        System.out.println("Size: " + rows + "x" + cols);
+        System.out.println("#drones: " + droneNo);
+        System.out.println("#maxPayload: " + maxPayload);
+        System.out.println("#turns: " + turnNo);
+        System.out.println("#products: " + productNo);
+        System.out.println("#warehouses: " + warehouseNo);
+        System.out.println("#orders: " + orderNo);
         String ret = rows + " " + cols + " " + droneNo + " " + turnNo + " " + maxPayload + " " + productNo + " " + warehouseNo + " " + orderNo + "\n";
-        for (Integer key : weights.keySet())
-            ret += key + " ~> " + weights.get(key) + "\n";
-        return ret;
+        System.out.println(ret);
+        System.out.println("==========================================================");
     }
 }

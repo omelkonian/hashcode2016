@@ -1,10 +1,5 @@
 package drones;
 
-import jsprit.core.problem.Location;
-import jsprit.core.problem.VehicleRoutingProblem;
-import jsprit.core.problem.job.Service;
-import jsprit.core.problem.solution.route.activity.TimeWindow;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,13 +7,13 @@ import java.util.Map;
  * @author Orestis Melkonian
  */
 public class Warehouse {
-    public static int id = 0;
-
-    public static Coords location;
+    public int id;
+    public static Point location;
     public Map<Integer, Integer> inventory = new HashMap<>();
 
-    public Warehouse(Coords coords) {
-        location = coords;
+    public Warehouse(int id, Point point) {
+        this.id = id;
+        location = point;
     }
 
     @Override
